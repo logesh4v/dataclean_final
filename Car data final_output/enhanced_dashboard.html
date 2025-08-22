@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Data Analysis Dashboard - Car data final</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; margin-bottom: 30px; text-align: center; }
+        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .header p { font-size: 1.2em; opacity: 0.9; }
+        .section { background: white; padding: 25px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .section h2 { color: #4a5568; margin-bottom: 20px; font-size: 1.8em; border-bottom: 3px solid #667eea; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .comparison { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; }
+        .vs { text-align: center; font-size: 2em; color: #667eea; font-weight: bold; }
+        .card { background: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #667eea; }
+        .card.before { border-left-color: #e53e3e; }
+        .card.after { border-left-color: #38a169; }
+        .card h3 { color: #2d3748; margin-bottom: 15px; }
+        .stat { display: flex; justify-content: space-between; margin-bottom: 8px; }
+        .stat-label { font-weight: 600; color: #4a5568; }
+        .stat-value { color: #667eea; font-weight: bold; }
+        .improvement { color: #38a169; font-weight: bold; }
+        .degradation { color: #e53e3e; font-weight: bold; }
+        .table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .table th, .table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .table th { background: #edf2f7; font-weight: 600; color: #4a5568; }
+        .table tr:hover { background: #f7fafc; }
+        .cleaning-log { background: #f0fff4; border: 1px solid #9ae6b4; border-radius: 8px; padding: 15px; margin-top: 15px; }
+        .cleaning-log h4 { color: #2f855a; margin-bottom: 10px; }
+        .cleaning-log ul { list-style: none; }
+        .cleaning-log li { margin-bottom: 5px; color: #2d3748; }
+        .tabs { display: flex; margin-bottom: 20px; }
+        .tab { padding: 10px 20px; background: #edf2f7; border: none; cursor: pointer; border-radius: 5px 5px 0 0; margin-right: 5px; }
+        .tab.active { background: #667eea; color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Enhanced Data Analysis Dashboard</h1>
+            <p>Dataset: Car data final | Generated: 2025-08-21 21:32:37</p>
+        </div>
+        
+        <div class="section">
+            <h2>🔄 Before vs After Cleaning</h2>
+            <div class="comparison">
+                <div class="card before">
+                    <h3>📥 Before Cleaning</h3>
+                    <div class="stat"><span class="stat-label">Rows:</span><span class="stat-value">421</span></div>
+                    <div class="stat"><span class="stat-label">Columns:</span><span class="stat-value">6</span></div>
+                    <div class="stat"><span class="stat-label">Missing Values:</span><span class="stat-value">796</span></div>
+                    <div class="stat"><span class="stat-label">Memory Usage:</span><span class="stat-value">0.11 MB</span></div>
+                </div>
+                <div class="vs">→</div>
+                <div class="card after">
+                    <h3>✅ After Cleaning</h3>
+                    <div class="stat"><span class="stat-label">Rows:</span><span class="stat-value">420</span></div>
+                    <div class="stat"><span class="stat-label">Columns:</span><span class="stat-value">6</span></div>
+                    <div class="stat"><span class="stat-label">Missing Values:</span><span class="stat-value">0</span></div>
+                    <div class="stat"><span class="stat-label">Memory Usage:</span><span class="stat-value">0.12 MB</span></div>
+                </div>
+            </div>
+            
+            <div class="cleaning-log">
+                <h4>🔧 Cleaning Actions Performed:</h4>
+                <ul>
+                    <li>• Standardized 6 column names</li><li>• No columns dropped (all below 95% missing threshold)</li><li>• Removed 1 duplicate rows</li><li>• Filled 397 missing values in 'year_of_make' with median</li><li>• Filled 397 missing values in 'car_age_years' with median</li><li>• Capped 19 outliers in 'year_of_make'</li><li>• Capped 19 outliers in 'car_age_years'</li><li>• Capped 16 outliers in 'mileage_km'</li><li>• Cleaning complete: (421, 6) -> (420, 6)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📈 Improvement Summary</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>📊 Data Changes</h3>
+                    <div class="stat"><span class="stat-label">Rows Change:</span><span class="stat-value degradation">-1</span></div>
+                    <div class="stat"><span class="stat-label">Columns Change:</span><span class="stat-value improvement">+0</span></div>
+                    <div class="stat"><span class="stat-label">Missing Values Removed:</span><span class="stat-value improvement">796</span></div>
+                </div>
+                <div class="card">
+                    <h3>🎯 Quality Metrics</h3>
+                    <div class="stat"><span class="stat-label">Data Completeness:</span><span class="stat-value">100.0%</span></div>
+                    <div class="stat"><span class="stat-label">Numeric Columns:</span><span class="stat-value">3</span></div>
+                    <div class="stat"><span class="stat-label">Categorical Columns:</span><span class="stat-value">3</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📋 Detailed Analysis</h2>
+            <div class="tabs">
+                <button class="tab active" onclick="showTab('before')">Before Cleaning</button>
+                <button class="tab" onclick="showTab('after')">After Cleaning</button>
+                <button class="tab" onclick="showTab('comparison')">Comparison</button>
+            </div>
+            
+            <div id="before" class="tab-content active">
+                <h3>📥 Raw Data Analysis</h3>
+                
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Missing</th>
+                    <th>Unique</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr>
+                    <td>car_model</td>
+                    <td>object</td>
+                    <td>0 (0.0%)</td>
+                    <td>148</td>
+                    <td>Most frequent: Kia Seltos</td>
+                </tr>
+            
+                <tr>
+                    <td>year_of_make</td>
+                    <td>float64</td>
+                    <td>398 (94.5%)</td>
+                    <td>7</td>
+                    <td>Mean: 2020.043, Std: 1.551</td>
+                </tr>
+            
+                <tr>
+                    <td>car_age_years</td>
+                    <td>float64</td>
+                    <td>398 (94.5%)</td>
+                    <td>7</td>
+                    <td>Mean: 4.957, Std: 1.551</td>
+                </tr>
+            
+                <tr>
+                    <td>mileage_km</td>
+                    <td>int64</td>
+                    <td>0 (0.0%)</td>
+                    <td>79</td>
+                    <td>Mean: 72433.268, Std: 51552.771</td>
+                </tr>
+            
+                <tr>
+                    <td>primary_action</td>
+                    <td>object</td>
+                    <td>0 (0.0%)</td>
+                    <td>38</td>
+                    <td>Most frequent: Checkup</td>
+                </tr>
+            
+                <tr>
+                    <td>service_notes</td>
+                    <td>object</td>
+                    <td>0 (0.0%)</td>
+                    <td>382</td>
+                    <td>Most frequent: Ford Fiesta. 130,000 km. Clutch replaced.</td>
+                </tr>
+            </tbody></table>
+            </div>
+            
+            <div id="after" class="tab-content">
+                <h3>✅ Cleaned Data Analysis</h3>
+                
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Missing</th>
+                    <th>Unique</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+                <tr>
+                    <td>car_model</td>
+                    <td>object</td>
+                    <td>0 (0.0%)</td>
+                    <td>148</td>
+                    <td>Most frequent: Kia Seltos</td>
+                </tr>
+            
+                <tr>
+                    <td>year_of_make</td>
+                    <td>float64</td>
+                    <td>0 (0.0%)</td>
+                    <td>1</td>
+                    <td>Mean: 2020.0, Std: 0.0</td>
+                </tr>
+            
+                <tr>
+                    <td>car_age_years</td>
+                    <td>float64</td>
+                    <td>0 (0.0%)</td>
+                    <td>1</td>
+                    <td>Mean: 5.0, Std: 0.0</td>
+                </tr>
+            
+                <tr>
+                    <td>mileage_km</td>
+                    <td>int64</td>
+                    <td>0 (0.0%)</td>
+                    <td>69</td>
+                    <td>Mean: 68891.443, Std: 37926.746</td>
+                </tr>
+            
+                <tr>
+                    <td>primary_action</td>
+                    <td>object</td>
+                    <td>0 (0.0%)</td>
+                    <td>38</td>
+                    <td>Most frequent: Checkup</td>
+                </tr>
+            
+                <tr>
+                    <td>service_notes</td>
+                    <td>object</td>
+                    <td>0 (0.0%)</td>
+                    <td>382</td>
+                    <td>Most frequent: Ford Fiesta. 130,000 km. Clutch replaced.</td>
+                </tr>
+            </tbody></table>
+            </div>
+            
+            <div id="comparison" class="tab-content">
+                <h3>🔍 Before vs After Comparison</h3>
+                
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Before</th>
+                    <th>After</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Total Rows</td>
+                    <td>421</td>
+                    <td>420</td>
+                    <td class="degradation">-1</td>
+                </tr>
+                <tr>
+                    <td>Total Columns</td>
+                    <td>6</td>
+                    <td>6</td>
+                    <td class="improvement">+0</td>
+                </tr>
+                <tr>
+                    <td>Missing Values</td>
+                    <td>796</td>
+                    <td>0</td>
+                    <td class="improvement">+796</td>
+                </tr>
+                <tr>
+                    <td>Numeric Columns</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td class="improvement">+0</td>
+                </tr>
+                <tr>
+                    <td>Categorical Columns</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td class="improvement">+0</td>
+                </tr>
+            </tbody>
+        </table>
+        
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
+        
