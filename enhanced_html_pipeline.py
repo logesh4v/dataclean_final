@@ -464,18 +464,22 @@ class EnhancedHTMLPipeline:
         
         # Save outputs
         dashboard_path = self.output_dir / "enhanced_dashboard.html"
-        cleaned_data_path = self.output_dir / "cleaned_data.csv"
+        cleaned_data_csv = self.output_dir / "cleaned_data.csv"
+        cleaned_data_excel = self.output_dir / "cleaned_data.xlsx"
         
         with open(dashboard_path, 'w', encoding='utf-8') as f:
             f.write(html_content)
         
-        self.cleaned_data.to_csv(cleaned_data_path, index=False)
+        # Save as both CSV and Excel
+        self.cleaned_data.to_csv(cleaned_data_csv, index=False)
+        self.cleaned_data.to_excel(cleaned_data_excel, index=False)
         
         print("\n" + "=" * 50)
         print("DATA CLEANING PIPELINE COMPLETED SUCCESSFULLY!")
         print("=" * 50)
         print(f"Enhanced Dashboard: {dashboard_path.absolute()}")
-        print(f"Cleaned Data: {cleaned_data_path.absolute()}")
+        print(f"Cleaned Data (CSV): {cleaned_data_csv.absolute()}")
+        print(f"Cleaned Data (Excel): {cleaned_data_excel.absolute()}")
         print("Open the HTML file in your browser to view the interactive dashboard!")
         
         return True
